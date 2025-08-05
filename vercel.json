@@ -4,8 +4,10 @@
   "outputDirectory": ".next",
   "cleanUrls": true,
   "trailingSlash": false,
+  "ignoreCommand": "npx next lint --no-cache && npx tsc --noEmit",
   "github": {
-    "silent": true
+    "silent": true,
+    "autoAlias": true
   },
   "headers": [
     {
