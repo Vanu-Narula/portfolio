@@ -1,0 +1,3 @@
+<!-- This is just a placeholder. Next.js will look for favicon.ico in the app directory -->
+<!-- You need to manually add a .ico file named favicon.ico to the app directory -->
+<!-- Use a tool like https://convertico.com/ to convert your SVG to ICO format -->
