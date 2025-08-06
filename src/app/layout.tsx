@@ -5,6 +5,8 @@ import Script from "next/script";
 import BrowserInit from "@/components/responsive/BrowserInit";
 import AccessibilityProvider from "@/components/accessibility/AccessibilityProvider";
 
+import { Analytics } from "@vercel/analytics/next";
+
 // Using system fonts instead of Google Fonts to avoid network connectivity issues
 const fontFamily = {
   variable: "--font-system",
