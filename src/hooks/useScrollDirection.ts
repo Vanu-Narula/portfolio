@@ -17,7 +17,7 @@ export function useScrollDirection() {
       setLastScrollY(scrollY > 0 ? scrollY : 0)
     }
 
-    window.addEventListener('scroll', updateScrollDirection)
+    window.addEventListener('scroll', updateScrollDirection, { passive: true })
     return () => window.removeEventListener('scroll', updateScrollDirection)
   }, [scrollDirection, lastScrollY])
 

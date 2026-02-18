@@ -9,11 +9,10 @@ export default function ScrollProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Only show progress bar after scrolling down a bit
       setIsVisible(window.scrollY > 100);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -21,11 +20,11 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-primary-500 origin-left z-50"
-      style={{ scaleX: scrollYProgress }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
+      className="fixed top-0 left-0 right-0 h-[2px] origin-left z-[60]"
+      style={{
+        scaleX: scrollYProgress,
+        background: "linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6)",
+      }}
     />
   );
 }

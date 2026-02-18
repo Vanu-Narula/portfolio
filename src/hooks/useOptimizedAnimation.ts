@@ -12,7 +12,7 @@ interface UseOptimizedAnimationProps {
 
 export function useOptimizedAnimation<T extends HTMLElement = HTMLDivElement>({
   threshold = 0.1,
-  rootMargin = '50px',
+  rootMargin = '-20px',
   triggerOnce = true,
   disableOnMobile = false
 }: UseOptimizedAnimationProps = {}) {
@@ -34,7 +34,7 @@ export function useOptimizedAnimation<T extends HTMLElement = HTMLDivElement>({
       checkIsMobile()
     }, 100)
     
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize, { passive: true })
     return () => {
       window.removeEventListener('resize', handleResize)
     }

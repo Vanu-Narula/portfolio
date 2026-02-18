@@ -53,10 +53,10 @@ export const DynamicContactSection = dynamic(
   }
 );
 
-// Skeleton loader component
+// Skeleton loader component — dark theme
 function SectionSkeleton() {
   return (
-    <div className="section-padding">
+    <div className="py-20 px-6 bg-[#080810]">
       <div className="container-width">
         <motion.div
           initial={{ opacity: 0 }}
@@ -65,17 +65,18 @@ function SectionSkeleton() {
         >
           {/* Header Skeleton */}
           <div className="text-center mb-16">
-            <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-lg w-96 mx-auto mb-4" />
-            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-lg w-2/3 mx-auto" />
+            <div className="h-3 bg-white/[0.06] rounded-full w-24 mx-auto mb-4" />
+            <div className="h-10 bg-white/[0.05] rounded-xl w-72 mx-auto mb-3" />
+            <div className="h-4 bg-white/[0.04] rounded-lg w-96 mx-auto" />
           </div>
 
           {/* Content Skeleton */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(6)].map((_, index) => (
-              <div key={index} className="space-y-4">
-                <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-lg" />
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
+              <div key={index} className="space-y-3 p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
+                <div className="h-36 bg-white/[0.05] rounded-xl" />
+                <div className="h-3 bg-white/[0.05] rounded w-3/4" />
+                <div className="h-3 bg-white/[0.04] rounded w-1/2" />
               </div>
             ))}
           </div>

@@ -23,7 +23,7 @@ export default function ScrollReveal({
   duration = 0.6,
   stagger = false,
   className = "",
-  threshold = 0.3,
+  threshold = 0.1,
   once = true,
   disableOnMobile = false,
 }: ScrollRevealProps) {
@@ -31,7 +31,7 @@ export default function ScrollReveal({
     threshold,
     triggerOnce: once,
     disableOnMobile,
-    rootMargin: "50px",
+    rootMargin: "-20px",
   });
 
   // Define animation variants based on direction

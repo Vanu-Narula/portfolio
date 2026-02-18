@@ -2,10 +2,7 @@
 
 import React, { useEffect } from "react";
 import PageLayout from "@/components/layout/PageLayout";
-import Section from "@/components/layout/Section";
 import HeroSection from "@/components/sections/HeroSection";
-import ScrollReveal from "@/components/animations/ScrollReveal";
-import PageTransition from "@/components/animations/PageTransition";
 import ScrollProgress from "@/components/animations/ScrollProgress";
 import {
   preloadCriticalResources,
@@ -23,67 +20,41 @@ import {
 
 export default function HomePage() {
   useEffect(() => {
-    // Preload critical resources on client-side
     preloadCriticalResources();
-
-    // Register service worker for offline support
     registerServiceWorker();
   }, []);
 
   return (
-    <PageTransition transitionType="zoom" duration={0.6}>
-      <PageLayout>
-        <ScrollProgress />
+    <PageLayout>
+      <ScrollProgress />
 
-        {/* Hero Section with Advanced Animations (not lazy loaded for fast LCP) */}
-        <ScrollReveal direction="up">
-          <HeroSection />
-        </ScrollReveal>
+      {/* Hero Section — not lazy loaded for fast LCP */}
+      <HeroSection />
 
-        {/* Career Timeline Section */}
-        <ScrollReveal direction="left" stagger={true}>
-          <LazyWrapper>
-            <DynamicTimelineSection />
-          </LazyWrapper>
-        </ScrollReveal>
+      {/* All other sections are lazy-loaded; they handle their own scroll animations */}
+      <LazyWrapper>
+        <DynamicTimelineSection />
+      </LazyWrapper>
 
-        {/* Skills Visualization Network */}
-        <ScrollReveal direction="scale" delay={0.2}>
-          <LazyWrapper>
-            <DynamicSkillsSection />
-          </LazyWrapper>
-        </ScrollReveal>
+      <LazyWrapper>
+        <DynamicSkillsSection />
+      </LazyWrapper>
 
-        {/* Projects Section */}
-        <ScrollReveal direction="right">
-          <LazyWrapper>
-            <DynamicProjectsSection />
-          </LazyWrapper>
-        </ScrollReveal>
+      <LazyWrapper>
+        <DynamicProjectsSection />
+      </LazyWrapper>
 
-        {/* Achievements Section */}
-        <ScrollReveal direction="up" delay={0.1}>
-          <LazyWrapper>
-            <DynamicAchievementsSection />
-          </LazyWrapper>
-        </ScrollReveal>
+      <LazyWrapper>
+        <DynamicAchievementsSection />
+      </LazyWrapper>
 
-        {/* Education Section */}
-        <ScrollReveal direction="left" stagger={true}>
-          <section id="education">
-            <LazyWrapper>
-              <DynamicEducationSection />
-            </LazyWrapper>
-          </section>
-        </ScrollReveal>
+      <LazyWrapper>
+        <DynamicEducationSection />
+      </LazyWrapper>
 
-        {/* Contact Section */}
-        <ScrollReveal direction="fade">
-          <LazyWrapper>
-            <DynamicContactSection />
-          </LazyWrapper>
-        </ScrollReveal>
-      </PageLayout>
-    </PageTransition>
+      <LazyWrapper>
+        <DynamicContactSection />
+      </LazyWrapper>
+    </PageLayout>
   );
 }

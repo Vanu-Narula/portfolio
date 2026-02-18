@@ -2,156 +2,144 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Github } from "lucide-react";
+import { Linkedin, Github, Twitter, Download, MessageCircle, Sparkles } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-const contactInfo = {
-  linkedin: "https://linkedin.com/in/vanraj-narula",
-  github: "https://github.com/Vanu-Narula",
-  twitter: "https://x.com/vanraj_narula",
-  availability: "Available for consultations and collaborations",
-};
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    handle: "Vanraj Narula",
+    href: "https://linkedin.com/in/vanraj-narula",
+    icon: Linkedin,
+    gradient: "from-[#0077B5] to-[#005fa3]",
+    description: "Connect professionally",
+  },
+  {
+    label: "GitHub",
+    handle: "@Vanu-Narula",
+    href: "https://github.com/Vanu-Narula",
+    icon: Github,
+    gradient: "from-[#24292e] to-[#444d56]",
+    description: "View my code & projects",
+  },
+  {
+    label: "Twitter / X",
+    handle: "@vanraj_narula",
+    href: "https://x.com/vanraj_narula",
+    icon: Twitter,
+    gradient: "from-[#1da1f2] to-[#0d8fd6]",
+    description: "Follow for tech insights",
+  },
+];
 
 export default function ContactSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(containerRef, { threshold: 0.3 });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.05 });
 
   return (
-    <section
-      id="contact"
-      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800/50"
-    >
-      <div className="container mx-auto px-6" ref={containerRef}>
-        {/* Section Header */}
+    <section id="contact" ref={sectionRef} className="section-bg-secondary py-20 sm:py-24 lg:py-28">
+      <div className="container-width">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <span className="section-label">Connect</span>
           <h2 className="text-4xl sm:text-5xl font-bold gradient-text mb-4">
-            Connect With Me
+            Let's Connect
           </h2>
-          <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
-            Interested in collaboration or have a question? I'd love to hear
-            from you. Feel free to reach out through my social media channels.
+          <p className="text-lg text-slate-400 max-w-xl mx-auto">
+            Interested in collaboration, consulting, or just want to talk GenAI?
+            I'd love to hear from you.
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
-          {/* Contact Information */}
+        <div className="max-w-2xl mx-auto">
+          {/* Availability badge */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex justify-center mb-10"
           >
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200">
-                Contact Information
-              </h3>
-              <p className="text-slate-700 dark:text-slate-300 mb-8">
-                Feel free to reach out through any of these channels. I'm always
-                open to discussing new projects, creative ideas, or
-                opportunities to be part of your vision.
-              </p>
-            </div>
-
-            {/* Contact Details */}
-            <div className="space-y-6">
-              {/* LinkedIn */}
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4"
-              >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 flex items-center justify-center text-white">
-                  <Linkedin size={20} />
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                    LinkedIn
-                  </div>
-                  <a
-                    href={contactInfo.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-semibold text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-500 transition-colors"
-                  >
-                    Vanraj Narula
-                  </a>
-                </div>
-              </motion.div>
-
-              {/* Twitter/X */}
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4"
-              >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-400 to-indigo-500 flex items-center justify-center text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                    Twitter
-                  </div>
-                  <a
-                    href="https://x.com/vanraj_narula"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-semibold text-slate-800 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400 transition-colors"
-                  >
-                    @vanraj_narula
-                  </a>
-                </div>
-              </motion.div>
-
-              {/* GitHub */}
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4"
-              >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-slate-700 to-slate-900 flex items-center justify-center text-white">
-                  <Github size={20} />
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                    GitHub
-                  </div>
-                  <a
-                    href={contactInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-semibold text-slate-800 dark:text-slate-200 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-                  >
-                    @vanraj-narula
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Availability Info */}
-            <div className="p-6 glass dark:glass-dark rounded-xl">
-              <h4 className="text-lg font-bold mb-2 text-slate-800 dark:text-slate-200">
-                My Availability
-              </h4>
-              <p className="text-slate-700 dark:text-slate-300">
-                I'm currently available for consulting and collaboration on AI
-                projects. Typically, I respond to inquiries within 24-48 hours.
-              </p>
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-sm text-emerald-300 font-medium">
+                Available for consulting & AI collaboration
+              </span>
             </div>
           </motion.div>
+
+          {/* Social cards */}
+          <div className="space-y-3 mb-10">
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
+                whileHover={{ x: 4, borderColor: "rgba(6,182,212,0.3)" }}
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.04] border border-white/[0.07] hover:bg-white/[0.07] transition-all group"
+              >
+                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${link.gradient} flex items-center justify-center text-white flex-shrink-0 shadow-lg`}>
+                  <link.icon size={20} />
+                </div>
+
+                <div className="flex-1">
+                  <p className="text-xs text-slate-500 mb-0.5">{link.description}</p>
+                  <p className="text-sm font-semibold text-white">{link.handle}</p>
+                </div>
+
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 group-hover:text-cyan-400 transition-colors">
+                  <span>{link.label}</span>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                    <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Resume CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.45 }}
+            className="card-dark p-6 text-center"
+          >
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Sparkles size={16} className="text-cyan-400" />
+              <h3 className="text-base font-semibold text-white">Interested in my full profile?</h3>
+            </div>
+            <p className="text-sm text-slate-400 mb-5">
+              Download my resume for a complete overview of experience, projects, and achievements.
+            </p>
+            <a
+              href="/docs/vanraj-narula-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2 text-sm"
+            >
+              <Download size={16} />
+              Download Resume
+            </a>
+          </motion.div>
+
+          {/* Response time note */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="text-center text-xs text-slate-600 mt-6"
+          >
+            <MessageCircle size={12} className="inline mr-1" />
+            Typically responds within 24-48 hours
+          </motion.p>
         </div>
       </div>
     </section>
