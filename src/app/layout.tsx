@@ -177,6 +177,9 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Vercel Analytics */}
+        <Analytics />
+
         {/* Structured Data */}
         <Script
           id="structured-data"
